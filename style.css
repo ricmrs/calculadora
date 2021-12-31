@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #5e8270;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+button {
+    border: none;
+    text-align: center;
+    line-height: 30px;
+    width: 140px;
+    height: 80px;
+    color: #cce3de;
+    background-color: #a4c3b2;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+button:hover{
+    background-color: #7da18f;
+}
+.title{
+    grid-area: t;
+    text-align: center;
+    font-size: 40px;
+    padding: 5px;
+    color:#cce3de;
+    background-color: #7da18fda;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.514);
+}
+.calculadora {
+    width: 560px;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.486);
+    display: grid;
+    grid-template-areas: "t t t t"
+                         "v v v v"
+                         ". . . ."
+                         ". . . ."
+                         ". . . ."
+                         ". . . e"
+                         "z z z e";
+}
+.visor {
+    grid-area: v;
+    height: 80px;
+    line-height: 80px;
+    display: flex;
+    color: #567666;
+    background-color: #cce3de;
+}
+.visor-num{
+    flex: 2;
+    text-align: center;
+    height: 100%;
+    background-color: transparent;
+}
+.visor-op{
+    flex: 1;
+    text-align: center;
+    height: 100%;
+    background-color: transparent;
+}
+#equal{
+    grid-area: e;
+    height: 100%;
+}
+#num0{
+    grid-area: z;
+    width: 100%;
+}

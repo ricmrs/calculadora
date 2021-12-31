@@ -1,9 +1,11 @@
 function handleClickClean(){
-    $result.textContent = $value1.textContent = $value2.textContent = $oper.textContent = $equal.textContent = ""
+    $result.textContent = $value1.textContent = $value2.textContent = $oper.textContent = $equal.textContent = "";
+    hasDot = [false, false];
 }
 
 function handleClickBks(){
     let value = $value1;
+    let pos = 0;
 
     if($equal.textContent){
         handleClickClean();
@@ -12,10 +14,14 @@ function handleClickBks(){
 
     if($oper.textContent){
         value = $value2;
+        pos = 1;
     }
 
-    len = value.textContent.length
-    value.textContent = (value.textContent).slice(0, len-1)
+    len = value.textContent.length;
+    if(value.textContent[len-1] === "."){
+        hasDot[pos] = false;
+    }
+    value.textContent = (value.textContent).slice(0, len-1);
 }
 
 function handleClickNum(event){
@@ -28,11 +34,21 @@ function handleClickNum(event){
     $button = event.target;
 
     if($oper.textContent){
-        $value2.textContent +=  $button.textContent;
-        return;
+        if(!hasDot[1] || $button.textContent != "."){
+            $value2.textContent +=  $button.textContent;
+            if($button.textContent === "."){
+                hasDot[1] = true;
+            }
+            return;
+        }
     }
 
-    $value1.textContent +=  $button.textContent;
+    if(!hasDot[0] || $button.textContent != "."){
+        $value1.textContent +=  $button.textContent;
+        if($button.textContent === "."){
+            hasDot[0] = true;
+        }
+    }
 }
 
 function handleClickOp(event){
@@ -50,9 +66,10 @@ function handleClickEqual(){
     }
 
     $equal.textContent = "=" ;
+    hasDot = [false, false];
 
-    let value1 = parseInt($value1.textContent);
-    let value2 = parseInt($value2.textContent);
+    let value1 = parseFloat($value1.textContent);
+    let value2 = parseFloat($value2.textContent);
     let oper = $oper.textContent;
     let result;
 
@@ -68,13 +85,10 @@ function handleClickEqual(){
             break;
         case '/':
             result = value1 / value2;
-            if(value1 % value2 != 0) {
-                result = result.toFixed(2)
-            }
             break;
     }
 
-    $result.textContent = result;
+    $result.textContent = result.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 0 });
 }
 
 function convertToHtml(virtualNode) {
@@ -161,6 +175,7 @@ function App(props) {
             React.createElement("button", {handleClick: 'handleClickNum(event)'}, "3"),
             React.createElement("button", {id:"equal", handleClick: 'handleClickEqual()'}, "="),
             React.createElement("button", {id:"num0", handleClick: 'handleClickNum(event)'}, "0"),
+            React.createElement("button", {handleClick: 'handleClickNum(event)'}, "."),
         )
     );
 }
@@ -172,3 +187,4 @@ const $value2 = document.querySelector('#value2');
 const $oper = document.querySelector('#oper');
 const $equal = document.querySelector('#equal');
 const $result = document.querySelector('#result');
+let hasDot = [false, false];

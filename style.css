@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root{
+    --bgc: #628395;
+    --bgc-button: #212d40;
+    --color-button: #c5c5ca;
+    --hover-button: #4b6574;
+    --bgc-visor: #cce3de;
+    --color-visor: #6982a3;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #5e8270;
+    background-color: var(--bgc);
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
 }
@@ -14,12 +23,12 @@ button {
     line-height: 30px;
     width: 140px;
     height: 80px;
-    color: #cce3de;
-    background-color: #a4c3b2;
+    color: var(--color-button);
+    background-color: var(--bgc-button);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 button:hover{
-    background-color: #7da18f;
+    background-color: var(--hover-button);
 }
 .title{
     grid-area: t;
@@ -27,7 +36,7 @@ button:hover{
     font-size: 40px;
     padding: 5px;
     color:#cce3de;
-    background-color: #7da18fda;
+    background-color: var(--hover-button);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.514);
 }
 .calculadora {
@@ -42,15 +51,15 @@ button:hover{
                          ". . . ."
                          ". . . ."
                          ". . . e"
-                         "z z z e";
+                         "z z . e";
 }
 .visor {
     grid-area: v;
     height: 80px;
     line-height: 80px;
     display: flex;
-    color: #567666;
-    background-color: #cce3de;
+    color: var(--color-visor);
+    background-color: var(--bgc-visor);
 }
 .visor-num{
     flex: 2;

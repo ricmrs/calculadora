@@ -52,7 +52,7 @@ function handleClickNum(event){
 }
 
 function handleClickOp(event){
-    if($value2.textContent){
+    if(!$value1.textContent){
         return;
     }
 

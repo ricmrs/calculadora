@@ -68,8 +68,12 @@ function handleClickEqual(){
     $equal.textContent = "=" ;
     hasDot = [false, false];
 
-    let value1 = parseFloat($value1.textContent);
-    let value2 = parseFloat($value2.textContent);
+    function convertCommaToDot(str){
+        return str.replace(/,/,".");
+    }
+
+    let value1 = parseFloat(convertCommaToDot($value1.textContent));
+    let value2 = parseFloat(convertCommaToDot($value2.textContent));
     let oper = $oper.textContent;
     let result;
 
@@ -88,7 +92,7 @@ function handleClickEqual(){
             break;
     }
 
-    $result.textContent = result.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 0 });
+    $result.textContent = result.toLocaleString("pt-BR", { maximumFractionDigits: 2, minimumFractionDigits: 0 });
 }
 
 function convertToHtml(virtualNode) {
@@ -175,7 +179,7 @@ function App(props) {
             React.createElement("button", {handleClick: 'handleClickNum(event)'}, "3"),
             React.createElement("button", {id:"equal", handleClick: 'handleClickEqual()'}, "="),
             React.createElement("button", {id:"num0", handleClick: 'handleClickNum(event)'}, "0"),
-            React.createElement("button", {handleClick: 'handleClickNum(event)'}, "."),
+            React.createElement("button", {handleClick: 'handleClickNum(event)'}, ","),
         )
     );
 }

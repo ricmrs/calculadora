@@ -35,6 +35,9 @@ function handleClickNum(event){
 
     if($oper.textContent){
         if(!hasDot[1] || $button.textContent != ","){
+            if($value2.textContent.length > 7){
+                return
+            }    
             $value2.textContent +=  $button.textContent;
             if($button.textContent === ","){
                 hasDot[1] = true;
@@ -44,6 +47,9 @@ function handleClickNum(event){
     }
 
     if(!hasDot[0] || $button.textContent != ","){
+        if($value1.textContent.length > 7){
+            return
+        }
         $value1.textContent +=  $button.textContent;
         if($button.textContent === ","){
             hasDot[0] = true;
@@ -52,7 +58,7 @@ function handleClickNum(event){
 }
 
 function handleClickOp(event){
-    if(!$value1.textContent){
+    if(!$value1.textContent || $value2.textContent){
         return;
     }
 
@@ -92,7 +98,11 @@ function handleClickEqual(){
             break;
     }
 
-    $result.textContent = result.toLocaleString("pt-BR", { maximumFractionDigits: 2, minimumFractionDigits: 0 });
+    if(result > 999999999999){
+        result = result.toExponential(9);
+    }
+
+    $result.textContent = result.toLocaleString("pt-BR", { maximumFractionDigits: 10, minimumFractionDigits: 0});
 }
 
 function convertToHtml(virtualNode) {

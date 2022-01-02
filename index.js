@@ -18,7 +18,7 @@ function handleClickBks(){
     }
 
     len = value.textContent.length;
-    if(value.textContent[len-1] === "."){
+    if(value.textContent[len-1] === ","){
         hasDot[pos] = false;
     }
     value.textContent = (value.textContent).slice(0, len-1);
@@ -34,18 +34,18 @@ function handleClickNum(event){
     $button = event.target;
 
     if($oper.textContent){
-        if(!hasDot[1] || $button.textContent != "."){
+        if(!hasDot[1] || $button.textContent != ","){
             $value2.textContent +=  $button.textContent;
-            if($button.textContent === "."){
+            if($button.textContent === ","){
                 hasDot[1] = true;
             }
             return;
         }
     }
 
-    if(!hasDot[0] || $button.textContent != "."){
+    if(!hasDot[0] || $button.textContent != ","){
         $value1.textContent +=  $button.textContent;
-        if($button.textContent === "."){
+        if($button.textContent === ","){
             hasDot[0] = true;
         }
     }

@@ -21,7 +21,7 @@ button {
     border: none;
     text-align: center;
     line-height: 30px;
-    width: 140px;
+    width: 145px;
     height: 80px;
     color: var(--color-button);
     background-color: var(--bgc-button);
@@ -66,6 +66,8 @@ button:hover{
     text-align: center;
     height: 100%;
     background-color: transparent;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .visor-op{
     flex: 1;
